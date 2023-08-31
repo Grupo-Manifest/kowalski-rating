@@ -2,6 +2,7 @@
 
 package ecb.manifest.kowalski.rating.ui.presentation.review
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,14 +20,23 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ecb.manifest.kowalski.rating.events.ReviewEvent
 import ecb.manifest.kowalski.rating.events.ReviewState
+import ecb.manifest.kowalski.rating.ui.viewModels.ReviewViewModel
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
-fun ReviewScreen(state: ReviewState, onEvent: (ReviewEvent) -> Unit) {
+fun ReviewScreen(
+    viewModel: ReviewViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+) {
+    val state by viewModel.state.collectAsState()
+    val onEvent: (ReviewEvent) -> Unit = viewModel::onEvent
+
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
