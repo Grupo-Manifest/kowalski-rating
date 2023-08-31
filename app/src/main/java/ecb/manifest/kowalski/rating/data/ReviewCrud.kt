@@ -6,8 +6,8 @@ class ReviewCrud : IReviewCrud {
     val reviewList = mutableListOf<Review>()
     var currentId = 1
 
-    override fun addReview(serviceQuality: Int, fuelPrices: Double) {
-        val newReview = Review(currentId++, serviceQuality, fuelPrices)
+    override fun addReview(serviceQuality: Int) {
+        val newReview = Review(currentId++, serviceQuality)
         reviewList.add(newReview)
     }
 
@@ -15,11 +15,10 @@ class ReviewCrud : IReviewCrud {
         return reviewList.find { it.id == id }
     }
 
-    override fun updateReview(id: Int, newServiceQuality: Int, newFuelPrices: Double) {
+    override fun updateReview(id: Int, newServiceQuality: Int) {
         val review = findReviewById(id)
         review?.let {
             it.serviceQuality = newServiceQuality
-            it.fuelPrices = newFuelPrices
         }
     }
 
