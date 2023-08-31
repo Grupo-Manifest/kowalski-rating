@@ -1,4 +1,4 @@
-package ecb.manifest.kowalski.rating.dao
+package ecb.manifest.kowalski.rating.db
 
 import android.content.Context
 import androidx.room.Database

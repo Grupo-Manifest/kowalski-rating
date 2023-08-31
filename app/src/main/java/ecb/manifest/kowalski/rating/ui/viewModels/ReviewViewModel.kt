@@ -2,7 +2,7 @@ package ecb.manifest.kowalski.rating.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ecb.manifest.kowalski.rating.dao.ReviewDao
+import ecb.manifest.kowalski.rating.db.ReviewDao
 import ecb.manifest.kowalski.rating.events.ReviewEvent
 import ecb.manifest.kowalski.rating.events.ReviewState
 import ecb.manifest.kowalski.rating.models.Review

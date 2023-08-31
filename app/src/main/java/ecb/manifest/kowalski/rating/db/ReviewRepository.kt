@@ -1,4 +1,4 @@
-package ecb.manifest.kowalski.rating.dao
+package ecb.manifest.kowalski.rating.db
 
 import ecb.manifest.kowalski.rating.models.Review
 import kotlinx.coroutines.flow.Flow

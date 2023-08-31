@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import ecb.manifest.kowalski.rating.dao.ReviewDBContext
-import ecb.manifest.kowalski.rating.dao.ReviewDao
+import ecb.manifest.kowalski.rating.db.ReviewDBContext
+import ecb.manifest.kowalski.rating.db.ReviewDao
 import javax.inject.Singleton
 
 @Module

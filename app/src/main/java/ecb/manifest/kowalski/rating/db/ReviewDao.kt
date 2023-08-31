@@ -1,4 +1,4 @@
-package ecb.manifest.kowalski.rating.dao
+package ecb.manifest.kowalski.rating.db
 
 import androidx.room.Dao
 import androidx.room.Delete
