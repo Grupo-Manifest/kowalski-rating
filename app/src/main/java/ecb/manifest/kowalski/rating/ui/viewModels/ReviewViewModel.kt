@@ -44,7 +44,7 @@ class ReviewViewModel @Inject constructor(
             ReviewEvent.SaveReview -> {
                 val serviceQuality = state.value.serviceQuality
 
-                if (serviceQuality == 0) {
+                if (serviceQuality.isBlank()) {
                     return
                 }
 
@@ -70,6 +70,8 @@ class ReviewViewModel @Inject constructor(
                     isWritingReview = true
                 ) }
             }
+
+            else -> {}
         }
     }
 }

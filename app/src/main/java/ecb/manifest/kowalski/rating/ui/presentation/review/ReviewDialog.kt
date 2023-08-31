@@ -26,11 +26,11 @@ fun AddReviewDialog(
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 TextField(
-                    value = state.serviceQuality.toString(),
+                    value = state.serviceQuality,
                     onValueChange = {
-                        onEvent(ReviewEvent.SetServiceQuality(1))
+                        onEvent(ReviewEvent.SetServiceQuality(it))
                     },
-                    placeholder = { Text(text = "Service Qaulity") }
+                    placeholder = { Text(text = "Service Quality") }
                 )
             }
         },

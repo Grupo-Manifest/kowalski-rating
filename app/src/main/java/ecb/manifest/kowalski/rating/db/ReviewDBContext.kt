@@ -8,7 +8,7 @@ import ecb.manifest.kowalski.rating.models.Review
 
 @Database(
     entities = [Review::class],
-    version = 1,
+    version = 2,
 )
 abstract class ReviewDBContext : RoomDatabase() {
     abstract fun getDAO(): ReviewDao
