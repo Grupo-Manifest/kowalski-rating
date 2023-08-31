@@ -1,6 +1,8 @@
 package ecb.manifest.kowalski.rating.dao
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 import ecb.manifest.kowalski.rating.models.Review
 
@@ -9,5 +11,20 @@ import ecb.manifest.kowalski.rating.models.Review
     version = 1,
 )
 abstract class ReviewDBContext : RoomDatabase() {
-    abstract val dao: ReviewDao
+    abstract fun getDAO(): ReviewDao
+
+    companion object {
+        private var databaseInstance: ReviewDBContext? = null
+
+        fun getReviewDatabase(context: Context): ReviewDBContext {
+            if (databaseInstance == null) {
+                databaseInstance = Room.databaseBuilder<ReviewDBContext>(
+                    context.applicationContext, ReviewDBContext::class.java, "Reviews"
+                )
+                    .allowMainThreadQueries()
+                    .build()
+            }
+            return databaseInstance!!
+        }
+    }
 }
