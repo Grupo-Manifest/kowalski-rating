@@ -1,7 +1,11 @@
 package ecb.manifest.kowalski.rating.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Review(
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     var serviceQuality: Int,
-    var fuelPrices: Double
 )
