@@ -39,6 +39,10 @@ fun ReviewScreen(state: ReviewState, onEvent: (ReviewEvent) -> Unit) {
             }
         }
     ) { padding ->
+        if (state.isWritingReview) {
+            AddReviewDialog(state = state, onEvent = onEvent)
+        }
+
         LazyColumn(
             contentPadding = padding,
             modifier = Modifier.fillMaxSize(),
