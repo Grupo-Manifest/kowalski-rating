@@ -1,16 +1,16 @@
 package ecb.manifest.kowalski.rating.ui.presentation.review
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import ecb.manifest.kowalski.rating.events.ReviewEvent
 import ecb.manifest.kowalski.rating.events.ReviewState
@@ -33,7 +33,8 @@ fun AddReviewDialog(
                     onValueChange = {
                         onEvent(ReviewEvent.SetServiceQuality(it))
                     },
-                    placeholder = { Text(text = "Service Quality") }
+                    placeholder = { Text(text = "Service Quality") },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
                 )
             }
         },
