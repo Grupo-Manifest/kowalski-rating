@@ -89,4 +89,7 @@ dependencies {
     val hiltVersion = "2.45"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    // MapCompose
+    implementation("ovh.plrapps:mapcompose:2.8.1")
 }
