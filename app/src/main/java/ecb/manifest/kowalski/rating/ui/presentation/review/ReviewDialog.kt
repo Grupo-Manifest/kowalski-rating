@@ -25,13 +25,15 @@ fun AddReviewDialog(
         title = { Text(text = "Add review") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                TextField(
-                    value = state.serviceQuality,
-                    onValueChange = {
-                        onEvent(ReviewEvent.SetServiceQuality(it))
-                    },
-                    placeholder = { Text(text = "Service Quality") }
-                )
+                state.serviceQuality?.let { it ->
+                    TextField(
+                        value = it,
+                        onValueChange = {
+                            onEvent(ReviewEvent.SetServiceQuality(it))
+                        },
+                        placeholder = { Text(text = "Service Quality") }
+                    )
+                }
             }
         },
         confirmButton = {

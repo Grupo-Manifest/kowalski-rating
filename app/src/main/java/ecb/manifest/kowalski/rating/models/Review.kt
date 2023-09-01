@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class Review(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    var serviceQuality: String = "1",
+    var serviceQuality: String?,
 )
