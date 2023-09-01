@@ -1,10 +1,13 @@
 package ecb.manifest.kowalski.rating.ui.presentation.review
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,19 +28,19 @@ fun AddReviewDialog(
         title = { Text(text = "Add review") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                state.serviceQuality?.let { it ->
-                    TextField(
-                        value = it,
-                        onValueChange = {
-                            onEvent(ReviewEvent.SetServiceQuality(it))
-                        },
-                        placeholder = { Text(text = "Service Quality") }
-                    )
-                }
+                TextField(
+                    value = state.serviceQuality,
+                    onValueChange = {
+                        onEvent(ReviewEvent.SetServiceQuality(it))
+                    },
+                    placeholder = { Text(text = "Service Quality") }
+                )
             }
         },
         confirmButton = {
-            onEvent(ReviewEvent.SaveReview)
+            Button(onClick = { onEvent(ReviewEvent.SaveReview) }) {
+                Text(text = "Confirm")
+            }
         },
     )
 }

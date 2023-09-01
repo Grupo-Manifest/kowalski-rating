@@ -8,7 +8,7 @@ import ecb.manifest.kowalski.rating.models.Review
 
 @Database(
     entities = [Review::class],
-    version = 3,
+    version = 4,
     exportSchema = false,
 )
 abstract class ReviewDBContext : RoomDatabase() {

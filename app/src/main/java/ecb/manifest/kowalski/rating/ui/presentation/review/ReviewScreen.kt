@@ -63,7 +63,7 @@ fun ReviewScreen(
                     Column(modifier = Modifier.weight(1f)) {
                         Text(text = "${review.id}", fontSize = 12.sp)
                         Text(
-                            text = "${review.serviceQuality}",
+                            text = review.serviceQuality,
                             fontSize = 20.sp,
                         )
                     }
