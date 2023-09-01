@@ -2,7 +2,8 @@ package ecb.manifest.kowalski.rating.ui.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ecb.manifest.kowalski.rating.dao.ReviewDao
+import dagger.hilt.android.lifecycle.HiltViewModel
+import ecb.manifest.kowalski.rating.db.ReviewRepository
 import ecb.manifest.kowalski.rating.events.ReviewEvent
 import ecb.manifest.kowalski.rating.events.ReviewState
 import ecb.manifest.kowalski.rating.models.Review
@@ -12,9 +13,13 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ReviewViewModel(private val dao: ReviewDao) : ViewModel() {
-    private val _reviews = dao.getReviewsById()
+@HiltViewModel
+class ReviewViewModel @Inject constructor(
+    private val repository: ReviewRepository
+) : ViewModel() {
+    private val _reviews = repository.getReviewsById()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
     private val _state = MutableStateFlow(ReviewState())
@@ -26,7 +31,7 @@ class ReviewViewModel(private val dao: ReviewDao) : ViewModel() {
         when (event) {
             is ReviewEvent.DeleteReview -> {
                 viewModelScope.launch {
-                    dao.deleteReview(event.review)
+                    repository.deleteReview(event.review)
                 }
             }
 
@@ -39,14 +44,14 @@ class ReviewViewModel(private val dao: ReviewDao) : ViewModel() {
             ReviewEvent.SaveReview -> {
                 val serviceQuality = state.value.serviceQuality
 
-                if (serviceQuality == 0) {
+                if (serviceQuality.isBlank()) {
                     return
                 }
 
                 val review = Review(serviceQuality = serviceQuality)
 
                 viewModelScope.launch {
-                    dao.upsertReview(review)
+                    repository.upsertReview(review)
                 }
                 _state.update { it.copy(
                     isWritingReview = false
@@ -65,6 +70,8 @@ class ReviewViewModel(private val dao: ReviewDao) : ViewModel() {
                     isWritingReview = true
                 ) }
             }
+
+            else -> {}
         }
     }
 }
