@@ -23,7 +23,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ecb.manifest.kowalski.rating.events.ReviewEvent
+import ecb.manifest.kowalski.rating.ui.navigation.Screen
 import ecb.manifest.kowalski.rating.ui.presentation.map.MapScreen
 import ecb.manifest.kowalski.rating.ui.presentation.review.AddReviewDialog
 import ecb.manifest.kowalski.rating.ui.theme.OrangeShell
@@ -33,6 +35,7 @@ import ecb.manifest.kowalski.rating.ui.viewModels.ReviewViewModel
 @Composable
 fun MainScreen(
     viewModel: ReviewViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+    navController: NavController,
     ) {
     val state by viewModel.state.collectAsState()
     val onEvent: (ReviewEvent) -> Unit = viewModel::onEvent
@@ -88,7 +91,9 @@ fun MainScreen(
                             .height(50.dp),
                         colors = ButtonDefaults.buttonColors(PurpleShell),
 
-                        onClick = { /*TODO*/ }
+                        onClick = {
+                            navController.navigate(Screen.ReviewScreen.route)
+                        }
                     ) {
                         Text(text = "List")
                     }
