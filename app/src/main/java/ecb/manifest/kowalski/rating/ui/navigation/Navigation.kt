@@ -19,7 +19,7 @@ fun Navigation() {
         }
         composable(Screen.ReviewScreen.route) {
             val viewModel = hiltViewModel<ReviewViewModel>()
-            ReviewScreen(viewModel)
+            ReviewScreen(viewModel, navController)
         }
     }
 }
