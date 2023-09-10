@@ -2,7 +2,6 @@
 
 package ecb.manifest.kowalski.rating.ui.presentation.review
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,10 +25,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ecb.manifest.kowalski.rating.events.ReviewEvent
-import ecb.manifest.kowalski.rating.events.ReviewState
 import ecb.manifest.kowalski.rating.ui.viewModels.ReviewViewModel
 
-@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun ReviewScreen(
     viewModel: ReviewViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
@@ -49,10 +46,6 @@ fun ReviewScreen(
             }
         }
     ) { padding ->
-        if (state.isWritingReview) {
-            AddReviewDialog(state = state, onEvent = onEvent)
-        }
-
         LazyColumn(
             contentPadding = padding,
             modifier = Modifier.fillMaxSize(),
