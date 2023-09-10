@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -14,6 +15,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import ecb.manifest.kowalski.rating.events.ReviewEvent
 import ecb.manifest.kowalski.rating.events.ReviewState
+import ecb.manifest.kowalski.rating.ui.theme.PurpleShell
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +41,10 @@ fun AddReviewDialog(
             }
         },
         confirmButton = {
-            Button(onClick = { onEvent(ReviewEvent.SaveReview) }) {
+            Button(
+                colors = ButtonDefaults.buttonColors(PurpleShell),
+                onClick = { onEvent(ReviewEvent.SaveReview) },
+            ) {
                 Text(text = "Confirm")
             }
         },
