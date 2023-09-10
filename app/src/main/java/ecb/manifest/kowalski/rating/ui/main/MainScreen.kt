@@ -78,7 +78,7 @@ fun MainScreen(
 
                         onClick = { onEvent(ReviewEvent.ShowReviewDialog) }
                     ) {
-                        Text(text = "Rating")
+                        Text(text = "Avaliar")
 
                         if (state.isWritingReview) {
                             AddReviewDialog(state = state, onEvent = onEvent)
@@ -95,7 +95,7 @@ fun MainScreen(
                             navController.navigate(Screen.ReviewScreen.route)
                         }
                     ) {
-                        Text(text = "List")
+                        Text(text = "Lista")
                     }
                 }
             }
