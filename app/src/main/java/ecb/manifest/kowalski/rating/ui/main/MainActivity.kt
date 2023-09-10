@@ -24,7 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dagger.hilt.android.AndroidEntryPoint
-import ecb.manifest.kowalski.rating.ui.presentation.review.ReviewScreen
+import ecb.manifest.kowalski.rating.ui.presentation.map.MapScreen
 import ecb.manifest.kowalski.rating.ui.theme.OrangeShell
 import ecb.manifest.kowalski.rating.ui.theme.PurpleShell
 
@@ -94,7 +94,7 @@ class MainActivity : ComponentActivity() {
                         .weight(4f)
                         .background(color = Color.White)
                 ) {
-                    ReviewScreen()
+                    MapScreen()
                 }
             }
         }
