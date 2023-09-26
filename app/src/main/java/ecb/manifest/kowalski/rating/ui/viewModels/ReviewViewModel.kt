@@ -48,7 +48,11 @@ class ReviewViewModel @Inject constructor(
                     return
                 }
 
-                val review = Review(serviceQuality = serviceQuality)
+                val review = Review(
+                    serviceQuality = serviceQuality,
+                    latitude = 0f,
+                    longitude = 0f,
+                )
 
                 viewModelScope.launch {
                     repository.upsertReview(review)

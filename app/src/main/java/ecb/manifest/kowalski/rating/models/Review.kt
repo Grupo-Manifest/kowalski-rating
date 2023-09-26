@@ -8,4 +8,7 @@ data class Review(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     var serviceQuality: String,
+    val latitude: Float,
+    val longitude: Float,
 )
+
