@@ -97,4 +97,8 @@ dependencies {
     // OSMdroid
     implementation("org.osmdroid:osmdroid-android:6.1.16")
     implementation("tech.utsmankece:osm-android-compose:0.0.5")
+
+    // OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
 }
